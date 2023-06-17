@@ -8,6 +8,7 @@
 #include "hash.h"
 #include "../debug.h"
 #include "threads/malloc.h"
+#include "vm/vm.h" //이렇게 해주어야 나중에 vm.c에 사용할때 문제가 발생하지 않음. 
 
 #define list_elem_to_hash_elem(LIST_ELEM)                       \
 	list_entry(LIST_ELEM, struct hash_elem, list_elem)
@@ -392,3 +393,10 @@ remove_elem (struct hash *h, struct hash_elem *e) {
 	list_remove (&e->list_elem);
 }
 
+uint64_t hash_func (const struct hash_elem *e, void *aux){
+//해시펑션은 고유한 값을 생성
+}
+
+bool less_func (const struct hash_elem *a,const struct hash_elem *b,void *aux){
+//고유한 값을 비교
+}

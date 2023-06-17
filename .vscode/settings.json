@@ -11,6 +11,9 @@
         "thread.h": "c",
         "pte.h": "c",
         "palloc.h": "c",
-        "main.h": "c"
+        "main.h": "c",
+        "inspect.h": "c",
+        "vm.h": "c",
+        "malloc.h": "c"
     }
 }
