@@ -34,7 +34,10 @@ struct hash_elem {
  * the structure that HASH_ELEM is embedded inside.  Supply the
  * name of the outer structure STRUCT and the member name MEMBER
  * of the hash element.  See the big comment at the top of the
- * file for an example. */
+ * file for an example. 
+ * 
+	hash_elem이 속한 실제 요소에 대한 포인터를 반환
+ * */
 #define hash_entry(HASH_ELEM, STRUCT, MEMBER)                   \
 	((STRUCT *) ((uint8_t *) &(HASH_ELEM)->list_elem        \
 		- offsetof (STRUCT, MEMBER.list_elem)))
@@ -54,7 +57,8 @@ typedef bool hash_less_func (const struct hash_elem *a,
  * data AUX. */
 typedef void hash_action_func (struct hash_elem *e, void *aux);
 
-/* Hash table. */
+/* Hash table. 
+전체 해시 테이블을 나타내는 구조체*/
 struct hash {
 	size_t elem_cnt;            /* Number of elements in table. */
 	size_t bucket_cnt;          /* Number of buckets, a power of 2. */
@@ -93,6 +97,7 @@ size_t hash_size (struct hash *);
 bool hash_empty (struct hash *);
 
 /* Sample hash functions. */
+
 uint64_t hash_bytes (const void *, size_t);
 uint64_t hash_string (const char *);
 uint64_t hash_int (int);

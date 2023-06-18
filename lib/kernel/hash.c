@@ -147,9 +147,9 @@ hash_delete (struct hash *h, struct hash_elem *e) {
    Modifying hash table H while hash_apply() is running, using
    any of the functions hash_clear(), hash_destroy(),
    hash_insert(), hash_replace(), or hash_delete(), yields
-   undefined behavior, whether done from ACTION or elsewhere. */
-void
-hash_apply (struct hash *h, hash_action_func *action) {
+   undefined behavior, whether done from ACTION or elsewhere. 
+   임의의 순서로 hash의 각 요소에 대해 ACTION을 한 번씩 호출*/
+void hash_apply (struct hash *h, hash_action_func *action) {
 	size_t i;
 
 	ASSERT (action != NULL);
@@ -182,8 +182,7 @@ hash_apply (struct hash *h, hash_action_func *action) {
    functions hash_clear(), hash_destroy(), hash_insert(),
    hash_replace(), or hash_delete(), invalidates all
    iterators. */
-void
-hash_first (struct hash_iterator *i, struct hash *h) {
+void hash_first (struct hash_iterator *i, struct hash *h) {
 	ASSERT (i != NULL);
 	ASSERT (h != NULL);
 
@@ -241,8 +240,7 @@ hash_empty (struct hash *h) {
 #define FNV_64_BASIS 0xcbf29ce484222325UL
 
 /* Returns a hash of the SIZE bytes in BUF. */
-uint64_t
-hash_bytes (const void *buf_, size_t size) {
+uint64_t hash_bytes (const void *buf_, size_t size) {
 	/* Fowler-Noll-Vo 32-bit hash, for bytes. */
 	const unsigned char *buf = buf_;
 	uint64_t hash;
